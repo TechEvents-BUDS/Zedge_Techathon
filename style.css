@@ -1,0 +1,50 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "GameFont";
+  src: url("assets/MinimalPixel.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "UIFont";
+  src: url("assets/SuperPixel.ttf") format("truetype");
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;  
+  background: #000;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 4.5em;
+  font-family: "UIFont";
+  color: #fff;
+  margin: 0;
+  padding: 20px 0px;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  border: 15px solid #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
