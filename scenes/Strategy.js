@@ -354,7 +354,7 @@ export default class Strategy extends Phaser.Scene {
         this.enemy.play("wizard-death", true);
         this.time.delayedCall(2000, () => {
           this.strategySound.stop()
-          this.scene.switch('game-over-scene');
+          this.scene.switch('game-won-scene');
         });
       }
     }

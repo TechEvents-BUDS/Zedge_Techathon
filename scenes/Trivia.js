@@ -262,7 +262,7 @@ export default class Trivia extends Phaser.Scene {
       this.knight.play("knight-death", true);
       this.time.delayedCall(2000, () => {
         this.triviaSound.stop()
-        this.scene.switch('game-over-scene');
+        this.scene.switch('game-won-scene');
       });
     }
   }

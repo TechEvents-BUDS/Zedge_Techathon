@@ -351,7 +351,7 @@ export default class knightScene extends Phaser.Scene {
           console.log("Enemy Died");
           this.time.delayedCall(2000, () => {
             this.drums.stop();
-            this.scene.switch("game-over-scene");
+            this.scene.switch("game-won-scene");
           });
         }
       });

@@ -4,6 +4,7 @@ import MenuScene from './scenes/menu'
 import knightScene from './scenes/Knight'
 import devilScene from './scenes/Devil'
 import GameOverScene from './scenes/GameOver'
+import GameWonScene from './scenes/gameWon'
 import Strategy from './scenes/Strategy'
 import Trivia from './scenes/Trivia'
 import CreatorScene from './scenes/Center'
@@ -33,6 +34,7 @@ font.load().then(() => {
         devilScene,
         Strategy,
         Trivia,
+        GameWonScene,
         GameOverScene
       ],
       dom: {
