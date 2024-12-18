@@ -18,6 +18,15 @@ simpleEnv = gym.make('SimpleCombatGame-v1')
 simpleModel = PPO.load("ppo_simple_combat_game_model.zip", env=simpleEnv)
 print("Simple Combat AI Loaded");
 
+register(
+    id='AdvanceCombatGame-v1',
+    entry_point='AI.Combat.my_env.advance_combat:AdvanceCombatEnv',
+)
+
+advanceEnv = gym.make('AdvanceCombatGame-v1')
+advanceModel = PPO.load("ppo_advance_combat_game_model.zip", env=advanceEnv)
+print("Advance Combat AI Loaded");
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     populate_riddle_pool()
@@ -52,6 +61,16 @@ async def predict_action(state: State):
     
     return {"action": int(action)}
 
+@app.post("/predict_advance_action/")
+async def predict_action(state: State):
+    state_array = np.array([state.ai_hp, state.player_hp, state.total_distance,
+                            state.x_distance, state.remaining_time, 
+                            state.is_attacking, state.knight_defending], dtype=np.float32)
+    
+    action, _ = advanceModel.predict(state_array, deterministic=False)
+    
+    return {"action": int(action)}
+
 riddle_pool = []
 
 def generate_trivia():
@@ -59,8 +78,8 @@ def generate_trivia():
 
     generation_config = {
         "temperature": 1,
-        "top_p": 0.95,
-        "top_k": 70,
+        "top_p": 0.70,
+        "top_k": 90,
         "max_output_tokens": 8192,
         "response_mime_type": "text/plain",
     }
